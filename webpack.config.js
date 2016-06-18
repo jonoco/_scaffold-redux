@@ -14,12 +14,15 @@ module.exports = {
   },
   module: {
     loaders: [
-      { exclude: /node_modules/, 
-        test: /\.js?$/, 
-        loader: 'babel' },
-      { test: /\.jsx?$/, 
+      { 
+        exclude: /node_modules/, test: /\.js?$/, loader: 'babel' 
+      },{ 
+        test: /\.jsx?$/, 
         loaders: ['react-hot', 'babel'], 
         include: path.join(__dirname,'src')
+      },{
+        test: /\.scss$/,
+        loader: 'style!css!sass'
       }
     ],
     query: { presets: ['es2015', 'react', 'stage-2'] }
