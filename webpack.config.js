@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: [
@@ -22,10 +23,13 @@ module.exports = {
         include: path.join(__dirname,'src')
       },{
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: 'style!css!postcss!sass'
       }
     ],
     query: { presets: ['es2015', 'react', 'stage-2'] }
+  },
+  postcss: function() {
+    return [ autoprefixer({ browsers: ['last 2 versions'] }) ];
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
