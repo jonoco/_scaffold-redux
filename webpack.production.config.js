@@ -7,23 +7,17 @@ var mainPath = path.resolve(__dirname, 'src', 'index');
 var srcPath = path.resolve(__dirname, 'src');
 
 module.exports = {
-  devtool: 'eval-cheap-source-map',
-  entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000',
-    'webpack/hot/only-dev-server',
-    mainPath
-  ],
-  output: {
-    path: buildPath,
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [
+	entry: mainPath,
+	output: {
+		path: buildPath,
+		filename: 'bundle.js'
+	},
+	module: {
+		loaders: [
       { 
         exclude: [nodeModulesPath], 
         test: /\.js?$/, 
-        loader: 'babel-loader' 
+        loader: 'babel', 
       },{ 
         test: /\.jsx?$/, 
         loaders: ['react-hot', 'babel'], 
@@ -41,11 +35,22 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+  	new webpack.optimize.OccurenceOrderPlugin(),
+  	new webpack.optimize.DedupePlugin(),
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('production')
+			}
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      }
+    })
   ]
-};
+}
