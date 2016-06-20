@@ -1,15 +1,18 @@
 {
   "name": "_scaffold-redux",
   "version": "2.0.0",
-  "description": "Scaffold for React-Redux apps with Babel",
-  "main": "index.js",
-  "repository": "",
+  "description": "Scaffold for building React-Redux apps",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonoco/_scaffold-redux.git"
+  },
   "scripts": {
     "start": "node server",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "Joshua Cox, joshua.n.cox@gmail.com",
+  "author": "Joshua Cox <joshua.n.cox@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "6.3.6",
@@ -35,7 +38,6 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "babel-preset-stage-1": "^6.1.18",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
