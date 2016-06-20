@@ -10,6 +10,7 @@ Scaffolding to quickly start up a React-Redux app.
 6. Bootstrap : 4-alpha
 
 ## Getting started
+To build a new app scaffold:
 ```$
     git clone https://github.com/jonoco/_scaffold-redux.git new_project
     cd new_project
@@ -17,6 +18,13 @@ Scaffolding to quickly start up a React-Redux app.
     npm run start
 ```
 And go to [localhost:3000](localhost:3000) to see the live app.
+
+## Building for production
+To build a minified bundle for production:
+```$
+    npm run prod
+```
+The minified bundle will be placed in the build folder
 
 ## License
 MIT
